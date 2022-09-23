@@ -77,6 +77,7 @@ class StatusesRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
 class NewsStatusGET(APIView):
     permission_classes = (StatusAddPermission,)
+    authentication_classes = (TokenAuthentication, SessionAuthentication)
 
     def get(self, request, news_id, status_slug):
         news = get_object_or_404(News, id=news_id)
@@ -94,6 +95,7 @@ class NewsStatusGET(APIView):
 
 class CommentStatusGET(APIView):
     permission_classes = (StatusAddPermission,)
+    authentication_classes = (TokenAuthentication, SessionAuthentication)
 
     def get(self, request, news_id, comment_id, status_slug):
         comment = get_object_or_404(Comment, id=comment_id)
